@@ -1,0 +1,70 @@
+﻿=== [1] ===
+Название: tmux
+Описание: менеджер терминальных сессий
+Синтаксис: tmux [-2CDluvV] [-c shell-command] [-f file] [-L socket-name] [-S socket-path] [-T features] [command [flags]]
+Пример: tmux new -s session_name
+Примечание: “A session is a single collection of pseudo terminals under the management of tmux.  Each session has one or more windows linked to it.”
+
+=== [2] ===
+Название: watch
+Описание: выполняет команду с заданным интервалом, постоянно показывая результат
+Синтаксис: watch [options] command
+Пример: watch -n 1 nvidia-smi
+Примечание: -b - сигнал при ненулевом результате, может быть полезно для отладки.
+
+=== [3] ===
+Название: script
+Описание: записывает сессию терминала в файл, который можно: повторно воспроизвести (scriptreplay) или исполнить (scriptlive)
+Синтаксис: script [options] [file]
+Пример: script -B session_name
+Примечание: "script places everything in the log file, including linefeeds and backspaces. This is not what the naive user expects. script is primarily designed for interactive terminal sessions."
+
+=== [4] ===
+Название: ncdu (NCurses Disk Usage)
+Описание: интерактивный дисковый анализатор
+Синтаксис: ncdu [options] dir
+Пример: ncdu -e .
+Примечание: версия команды du с графическим текстовым интерфейсом на основе ncurses. отмечается, что она в том числе работает быстрее, чем du + имеет более широкий функционал
+
+=== [5] ===
+Название: ag (The Silver Searcher)
+Описание: рекурсивный поисковик по коду
+Синтаксис: ag [FILE-TYPE] [OPTIONS] PATTERN [PATH]
+Пример: ag --list-file-types
+Примечание: более шустрый аналог grep, под большие базы кода
+
+=== [6] ===
+Название: pv (Pipe Viewer)
+Описание: мониторинг прогресса прохождения данных через конвейер
+Синтаксис: pv [OPTION] [FILE]
+Пример: pv disk-image.img > /dev/sda
+Примечание: (=w=)
+
+=== [7] ===
+Название: tac
+Описание: выводит содержимое файла в обратном порядке - для быстрого просмотров последних строк логов
+Синтаксис: tac [OPTION]... [FILE]...
+Пример: tac log_file
+Примечание: "With no FILE, or when FILE is -, read standard input."
+
+=== [8] ===
+Название: comm
+Описание: сравнивает два отсортированных файла, показывает общие и уникальные строки (для сравнения конфигов, например)
+Синтаксис: comm [OPTION]... FILE1 FILE2
+Пример: comm -12 file1 file2  Print only lines present in both file1 and file2.
+comm -3 file1 file2  Print lines in file1 not in file2, and vice versa.
+Примечание: With no options, produce three-column output.  Column one contains lines unique to FILE1, column two contains lines unique to FILE2, and column three contains lines common to both files.
+
+=== [9] ===
+Название: rev
+Описание: посимвольно разворачивает строки в файле
+Синтаксис: rev [file ...]
+Пример: rev text_file
+Примечание: This utility is a line-oriented tool and it uses in-memory allocated buffer for a whole wide-char line. If the input file is huge and without line breaks than allocate the memory for the file may be unsuccessful.
+
+=== [10] ===
+Название: tee
+Описание: перенаправляет вывод одновременно и в файл, и в терминал, инструмент логирования
+Синтаксис: tee [OPTION]... [FILE]...
+Пример: py script.py | tee script_log.log
+Примечание: The default MODE for the -p option is 'warn-nopipe'.
