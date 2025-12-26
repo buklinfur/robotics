@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<robot name="crop_plane">
+
+  <!-- FUSELAGE -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="1.5"/>
+      </geometry>
+      <material name="yellow">
+        <color rgba="1.0 0.9 0.2 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <cylinder radius="0.15" length="1.5"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="15.0"/>
+      <origin xyz="0 0 0"/>
+      <inertia ixx="1" ixy="0" ixz="0"
+               iyy="1" iyz="0"
+               izz="1"/>
+    </inertial>
+  </link>
+
+  <!-- WINGS -->
+  <link name="left_wing">
+    <visual>
+      <geometry>
+        <box size="1.0 0.4 0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left_wing_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_wing"/>
+    <origin xyz="0 0.7 0"/>
+  </joint>
+
+  <link name="right_wing">
+    <visual>
+      <geometry>
+        <box size="1.0 0.4 0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="right_wing_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_wing"/>
+    <origin xyz="0 -0.7 0"/>
+  </joint>
+
+  <!-- TAIL -->
+  <link name="tail">
+    <visual>
+      <geometry>
+        <box size="0.3 0.3 0.1"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="tail_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="tail"/>
+    <origin xyz="-0.75 0 0"/>
+  </joint>
+
+  <link name="vertical_tail">
+    <visual>
+      <geometry>
+        <box size="0.05 0.3 0.3"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="vertical_tail_joint" type="fixed">
+    <parent link="tail"/>
+    <child link="vertical_tail"/>
+    <origin xyz="0 0 0.2"/>
+  </joint>
+
+  <!-- PROPELLER -->
+  <link name="propeller">
+    <visual>
+      <geometry>
+        <box size="0.6 0.05 0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="propeller_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="propeller"/>
+    <origin xyz="0.8 0 0"/>
+  </joint>
+
+  <!-- WHEELS -->
+  <link name="left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.12" length="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <origin xyz="0.2 0.35 -0.25" rpy="0 1.5708 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.12" length="0.05"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <origin xyz="0.2 -0.35 -0.25" rpy="0 1.5708 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+  <link name="rear_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.07" length="0.04"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="rear_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="rear_wheel"/>
+    <origin xyz="-0.6 0 -0.25" rpy="0 1.5708 0"/>
+    <axis xyz="0 0 1"/>
+  </joint>
+
+</robot>
